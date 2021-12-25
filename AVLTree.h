@@ -685,8 +685,8 @@ AVLNode<T>* AVLTree<T>::rebalance_to_left(AVLNode<T>* node, AVLNode<T>* parent)
 
 // perform left rotation
 // precondition: valid node pointer is given
-// postcondition: return the new root of the subtree where the right node of
-// the input node becomes the new root and the input node becomes its new
+// postcondition: return the new parent of the subtree where the right node of
+// the input node becomes the new parent and the input node becomes its new
 // left node
 template <class T>
 AVLNode<T>* AVLTree<T>::rotate_left(AVLNode<T>* node)
@@ -694,16 +694,16 @@ AVLNode<T>* AVLTree<T>::rotate_left(AVLNode<T>* node)
     AVLNode<T>* new_left   = node;
     AVLNode<T>* new_parent = node->right;
     
-    // new left right takes over new root left
+    // new left right takes over new parent left
     new_left->right = new_parent->left;
     
-    // update new root left with new left
+    // update new parent left with new left
     new_parent->left = new_left;
     
     // update new left height
     update_height_node(new_left);
     
-    // update new root height
+    // update new parent height
     update_height_node(new_parent);
     
     return new_parent;
@@ -711,8 +711,8 @@ AVLNode<T>* AVLTree<T>::rotate_left(AVLNode<T>* node)
 
 // perform right rotation
 // precondition: valid node pointer is given
-// postcondition: return the new root of the subtree where the left node of
-// the input node becomes the new root and the input node becomes its new
+// postcondition: return the new parent of the subtree where the left node of
+// the input node becomes the new parent and the input node becomes its new
 // right node
 template <class T>
 AVLNode<T>* AVLTree<T>::rotate_right(AVLNode<T>* node)
@@ -720,16 +720,16 @@ AVLNode<T>* AVLTree<T>::rotate_right(AVLNode<T>* node)
     AVLNode<T>* new_right  = node;
     AVLNode<T>* new_parent = node->left;
     
-    // new right left takes over new root right
+    // new right left takes over new parent right
     new_right->left = new_parent->right;
     
-    // update new root right with new right
+    // update new parent right with new right
     new_parent->right = new_right;
     
     // update new right height
     update_height_node(new_right);
         
-    // update new root height
+    // update new parent height
     update_height_node(new_parent);
     
     return new_parent;
