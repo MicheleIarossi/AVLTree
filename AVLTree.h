@@ -329,7 +329,7 @@ void AVLTree<T>::clear()
 template <class T>
 void AVLTree<T>::update_height_node(AVLNode<T> *node)
 {
-    // the node has 2 childs
+    // the node has 2 children
     if (node->right && node->left)
         if (node->left->height > node->right->height)
             node->height = node->left->height + 1;
@@ -554,7 +554,7 @@ int AVLTree<T>::compute_node_balance(AVLNode<T>* node) const
     // no node?
     if (!node)
         return 0;
-    // the node has 2 childs
+    // the node has 2 children
     else if (node->left && node->right)
         node->balance = node->left->height - node->right->height;
     // the node has only 1 child
@@ -661,7 +661,7 @@ AVLNode<T>* AVLTree<T>::rebalance_to_left(AVLNode<T>* node, AVLNode<T>* parent)
     int balance_child = compute_node_balance(node->right);
     
     // check first if child node is unbalanced to the left
-    // then a righ-left rotation is needed
+    // then a right-left rotation is needed
     if (balance_child > 0)
     {
         // perform first right rotation of child node
